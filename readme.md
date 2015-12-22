@@ -16,17 +16,24 @@ $ npm install --global mobicon-cli
 $ mobicon --help
 
   Usage
-    $ mobicon <platform> <input>
+    $ mobicon <file>
 
   Options
-    --out  The output directory
+    -p, --platform  Platform to generate icons for
+    -o, --out       Output directory [Default: cwd]
 
   Examples
-    $ mobicon android icon.png
+    $ mobicon icon.png -p android
       ✔  success
-    $ mobicon ios icon.svg --out resources
+    $ mobicon icon.png -p android -p ios
+      ✔  success
+    $ mobicon icon.svg -p ios -o resources
       ✔  success
 ```
+
+## Platforms
+
+A list of the available platforms and their generated icons can be found [here](https://github.com/SamVerschueren/mobicon#platforms).
 
 
 ## Related

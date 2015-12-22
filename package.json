@@ -37,7 +37,8 @@
     "chalk": "^1.1.1",
     "log-symbols": "^1.0.2",
     "meow": "^3.6.0",
-    "mobicon": "^0.1.1"
+    "mobicon": "^0.2.0",
+    "update-notifier": "^0.6.0"
   },
   "devDependencies": {
     "ava": "*",
