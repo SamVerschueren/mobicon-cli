@@ -1,0 +1,49 @@
+{
+  "name": "mobicon-cli",
+  "version": "0.0.0",
+  "description": "Mobile icon generator",
+  "license": "MIT",
+  "repository": "SamVerschueren/mobicon-cli",
+  "author": {
+    "name": "Sam Verschueren",
+    "email": "sam.verschueren@gmail.com",
+    "url": "github.com/SamVerschueren"
+  },
+  "bin": {
+    "mobicon": "cli.js"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "mobile",
+    "icon",
+    "generator",
+    "mobicon",
+    "cordova",
+    "android",
+    "ios",
+    "blackberry10"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "log-symbols": "^1.0.2",
+    "meow": "^3.6.0",
+    "mobicon": "^0.1.1"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "del": "^2.2.0",
+    "execa": "^0.1.1",
+    "path-exists": "^2.1.0",
+    "xo": "*"
+  }
+}
