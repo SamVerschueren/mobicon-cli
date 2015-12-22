@@ -1,6 +1,6 @@
 {
   "name": "mobicon-cli",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Mobile icon generator",
   "license": "MIT",
   "repository": "SamVerschueren/mobicon-cli",
