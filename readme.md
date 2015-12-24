@@ -1,6 +1,6 @@
 # mobicon-cli [![Build Status](https://travis-ci.org/SamVerschueren/mobicon-cli.svg?branch=master)](https://travis-ci.org/SamVerschueren/mobicon-cli)
 
-> Mobile icon generator
+> Mobile app icon generator
 
 
 ## Install
