@@ -9,6 +9,8 @@
 $ npm install --global mobicon-cli
 ```
 
+> Note: Make sure to install [GraphicsMagick](https://github.com/SamVerschueren/mobicon#graphicsmagick) as well.
+
 
 ## Usage
 
