@@ -1,11 +1,8 @@
 import test from 'ava';
 import execa from 'execa';
-import del from 'del';
+import tempfile from 'tempfile';
+import path from 'path';
 import pathExists from 'path-exists';
-
-test.after(async () => {
-	await del(['android', 'icons']);
-});
 
 test('error', async t => {
 	await t.throws(execa('./cli.js'), /Please provide an input file/);
@@ -13,14 +10,18 @@ test('error', async t => {
 });
 
 test('generate', async t => {
-	await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-o', 'android']);
+	const dest = tempfile();
 
-	t.true(pathExists.sync('android/drawable/icon.png'));
+	await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-o', dest]);
+
+	t.true(pathExists.sync(path.join(dest, 'drawable/icon.png')));
 });
 
 test('multi platform', async t => {
-	await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-p', 'ios', '-o', 'icons']);
+	const dest = tempfile();
 
-	t.true(pathExists.sync('icons/ios/icon.png'));
-	t.true(pathExists.sync('icons/android/drawable/icon.png'));
+	await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-p', 'ios', '-o', dest]);
+
+	t.true(pathExists.sync(path.join(dest, 'ios/icon.png')));
+	t.true(pathExists.sync(path.join(dest, 'android/drawable/icon.png')));
 });
