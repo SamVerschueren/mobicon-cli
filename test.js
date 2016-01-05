@@ -4,24 +4,30 @@ import tempfile from 'tempfile';
 import path from 'path';
 import pathExists from 'path-exists';
 
+test.beforeEach(t => {
+	t.context.tmp = tempfile();
+});
+
 test('error', async t => {
 	await t.throws(execa('./cli.js'), /Please provide an input file/);
 	await t.throws(execa('./cli.js', ['fixtures/icon.png']), /Please provide at least one platform/);
 });
 
-test('generate', async t => {
-	const dest = tempfile();
+test('png input', async t => {
+	await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-o', t.context.tmp]);
 
-	await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-o', dest]);
+	t.true(pathExists.sync(path.join(t.context.tmp, 'drawable/icon.png')));
+});
 
-	t.true(pathExists.sync(path.join(dest, 'drawable/icon.png')));
+test('svg input', async t => {
+	await execa('./cli.js', ['fixtures/icon.svg', '-p', 'android', '-o', t.context.tmp]);
+
+	t.true(pathExists.sync(path.join(t.context.tmp, 'drawable/icon.png')));
 });
 
 test('multi platform', async t => {
-	const dest = tempfile();
+	await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-p', 'ios', '-o', t.context.tmp]);
 
-	await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-p', 'ios', '-o', dest]);
-
-	t.true(pathExists.sync(path.join(dest, 'ios/icon.png')));
-	t.true(pathExists.sync(path.join(dest, 'android/drawable/icon.png')));
+	t.true(pathExists.sync(path.join(t.context.tmp, 'ios/icon.png')));
+	t.true(pathExists.sync(path.join(t.context.tmp, 'android/drawable/icon.png')));
 });

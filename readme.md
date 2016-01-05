@@ -21,17 +21,20 @@ $ mobicon --help
     $ mobicon <file>
 
   Options
-    -p, --platform  Platform to generate icons for
-    -o, --out       Output directory [Default: cwd]
+    -p, --platform      Platform to generate icons for
+    -b, --background    Color of the icon background if the icon is transparant [Default: white]
+    -r, --contentRatio  Logo-icon ratio [Default: 1]
+    -o, --out           Output directory [Default: cwd]
 
   Examples
-    $ mobicon icon.png -p android
+    $ mobicon icon.png -p=android
       ✔  success
-    $ mobicon icon.png -p android -p ios
+    $ mobicon icon.png -p=android -p=ios
       ✔  success
-    $ mobicon icon.svg -p ios -o resources
+    $ mobicon icon.svg -p=ios -o=resources
       ✔  success
 ```
+
 
 ## Platforms
 

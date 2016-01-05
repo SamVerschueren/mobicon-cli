@@ -12,20 +12,29 @@ const cli = meow(`
 	  $ mobicon <file>
 
 	Options
-	  -p, --platform  Platform to generate icons for
-	  -o, --out       Output directory [Default: cwd]
+	  -p, --platform      Platform to generate icons for
+	  -b, --background    Color of the icon background if the icon is transparant [Default: white]
+	  -r, --contentRatio  Logo-icon ratio [Default: 1]
+	  -o, --out           Output directory [Default: cwd]
 
 	Examples
-	  $ mobicon icon.png -p android
+	  $ mobicon icon.png -p=android
 	    ✔  success
-	  $ mobicon icon.png -p android -p ios
+	  $ mobicon icon.png -p=android -p=ios
 	    ✔  success
-	  $ mobicon icon.svg -p ios -o resources
+	  $ mobicon icon.svg -p=ios -o=resources
 	    ✔  success
 `, {
 	alias: {
 		p: 'platform',
+		b: 'background',
+		r: 'contentRatio',
 		o: 'out'
+	},
+	default: {
+		background: 'white',
+		contentRatio: 1,
+		out: process.cwd()
 	}
 });
 
@@ -44,13 +53,13 @@ if (!cli.flags.platform) {
 const platforms = [].concat(cli.flags.platform);
 
 Promise.all(platforms.map(platform => {
-	let dest = cli.flags.out || '.';
+	let dest = cli.flags.out;
 
 	if (platforms.length > 1) {
 		dest = path.join(dest, platform);
 	}
 
-	return mobicon(cli.input[0], {platform, dest});
+	return mobicon(cli.input[0], {platform, dest, background: cli.flags.background, contentRatio: cli.flags.contentRatio});
 })).then(() => {
 	console.log(`  ${logSymbols.success}  success`);
 }).catch(err => {
