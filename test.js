@@ -1,7 +1,7 @@
+import path from 'path';
 import test from 'ava';
 import execa from 'execa';
 import tempfile from 'tempfile';
-import path from 'path';
 import pathExists from 'path-exists';
 
 test.beforeEach(t => {
