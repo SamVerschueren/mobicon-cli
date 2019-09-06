@@ -25,16 +25,26 @@ const cli = meow(`
 	  $ mobicon icon.svg -p=ios -o=resources
 	    ✔  success
 `, {
-	alias: {
-		p: 'platform',
-		b: 'background',
-		r: 'contentRatio',
-		o: 'out'
-	},
-	default: {
-		background: 'white',
-		contentRatio: 1,
-		out: process.cwd()
+	flags: {
+		platform: {
+			type: 'string',
+			alias: 'p'
+		},
+		background: {
+			type: 'string',
+			alias: 'b',
+			default: 'white'
+		},
+		contentRatio: {
+			type: 'number',
+			alias: 'r',
+			default: '1'
+		},
+		out: {
+			type: 'string',
+			alias: 'o',
+			default: process.cwd()
+		}
 	}
 });
 
@@ -62,6 +72,6 @@ Promise.all(platforms.map(platform => {
 	return mobicon(cli.input[0], {platform, dest, background: cli.flags.background, contentRatio: cli.flags.contentRatio});
 })).then(() => {
 	console.log(`  ${logSymbols.success}  success`);
-}).catch(err => {
-	console.log(`  ${logSymbols.error} ${chalk.bold.red('error')}  ${err.message}`);
+}).catch(error => {
+	console.log(`  ${logSymbols.error} ${chalk.bold.red('error')}  ${error.message}`);
 });
