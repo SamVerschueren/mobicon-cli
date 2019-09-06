@@ -5,17 +5,16 @@ const updateNotifier = require('update-notifier');
 const meow = require('meow');
 const mobicon = require('mobicon');
 const logSymbols = require('log-symbols');
-const chalk = require('chalk');
 
 const cli = meow(`
 	Usage
 	  $ mobicon <file>
 
 	Options
-	  -p, --platform      Platform to generate icons for
-	  -b, --background    Color of the icon background if the icon is transparant [Default: white]
-	  -r, --contentRatio  Logo-icon ratio [Default: 1]
-	  -o, --out           Output directory [Default: cwd]
+	  --platform, -p      Platform to generate icons for
+	  --background, -b    Color of the icon background if the icon is transparant [Default: white]
+	  --contentRatio, -r  Logo-icon ratio [Default: 1]
+	  --out, -o           Output directory [Default: cwd]
 
 	Examples
 	  $ mobicon icon.png -p=android
@@ -69,9 +68,14 @@ Promise.all(platforms.map(platform => {
 		dest = path.join(dest, platform);
 	}
 
-	return mobicon(cli.input[0], {platform, dest, background: cli.flags.background, contentRatio: cli.flags.contentRatio});
+	return mobicon(cli.input[0], {
+		platform,
+		dest,
+		background: cli.flags.background,
+		contentRatio: cli.flags.contentRatio
+	});
 })).then(() => {
 	console.log(`  ${logSymbols.success}  success`);
 }).catch(error => {
-	console.log(`  ${logSymbols.error} ${chalk.bold.red('error')}  ${error.message}`);
+	console.log(`  ${logSymbols.error}  ${error.message}`);
 });

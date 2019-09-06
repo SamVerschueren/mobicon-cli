@@ -1,11 +1,11 @@
 import path from 'path';
 import test from 'ava';
 import execa from 'execa';
-import tempfile from 'tempfile';
+import tempy from 'tempy';
 import pathExists from 'path-exists';
 
 test.beforeEach(t => {
-	t.context.tmp = tempfile();
+	t.context.tmp = tempy.file();
 });
 
 test('error', async t => {

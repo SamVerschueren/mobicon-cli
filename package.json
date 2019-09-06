@@ -36,17 +36,16 @@
 		"blackberry10"
 	],
 	"dependencies": {
-		"chalk": "^1.1.1",
-		"log-symbols": "^1.0.2",
+		"log-symbols": "^3.0.0",
 		"meow": "^5.0.0",
 		"mobicon": "^2.0.0",
-		"update-notifier": "^0.6.0"
+		"update-notifier": "^3.0.1"
 	},
 	"devDependencies": {
 		"ava": "^2.3.0",
 		"execa": "^0.1.1",
-		"path-exists": "^2.1.0",
-		"tempfile": "^1.1.1",
+		"path-exists": "^4.0.0",
+		"tempy": "^0.3.0",
 		"xo": "^0.24.0"
 	}
 }
