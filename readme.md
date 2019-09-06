@@ -21,15 +21,17 @@ $ mobicon --help
     $ mobicon <file>
 
   Options
-    -p, --platform      Platform to generate icons for
-    -b, --background    Color of the icon background if the icon is transparant [Default: white]
-    -r, --contentRatio  Logo-icon ratio [Default: 1]
-    -o, --out           Output directory [Default: cwd]
+    --platform, -p      Platform to generate icons for
+    --background, -b    Color of the icon background if the icon is transparant [Default: white]
+    --contentRatio, -r  Logo-icon ratio [Default: 1]
+    --roundedCorners    Generate icons with rounded corners [Default: true for pwa and Android]
+    --borderRadius      Border radius percentage [Default: 0.0909]
+    --out, -o           Output directory [Default: cwd]
 
   Examples
     $ mobicon icon.png -p=android
       ✔  success
-    $ mobicon icon.png -p=android -p=ios
+    $ mobicon icon.png -p=android -p=ios -p=pwa
       ✔  success
     $ mobicon icon.svg -p=ios -o=resources
       ✔  success

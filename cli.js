@@ -14,6 +14,8 @@ const cli = meow(`
 	  --platform, -p      Platform to generate icons for
 	  --background, -b    Color of the icon background if the icon is transparant [Default: white]
 	  --contentRatio, -r  Logo-icon ratio [Default: 1]
+	  --roundedCorners    Generate icons with rounded corners [Default: true for pwa and Android]
+	  --borderRadius      Border radius percentage [Default: 0.0909]
 	  --out, -o           Output directory [Default: cwd]
 
 	Examples
