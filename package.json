@@ -7,7 +7,7 @@
 	"author": {
 		"name": "Sam Verschueren",
 		"email": "sam.verschueren@gmail.com",
-		"url": "github.com/SamVerschueren"
+		"url": "https://github.com/SamVerschueren"
 	},
 	"bin": {
 		"mobicon": "cli.js"
@@ -37,15 +37,15 @@
 	],
 	"dependencies": {
 		"log-symbols": "^3.0.0",
-		"meow": "^5.0.0",
+		"meow": "^9.0.0",
 		"mobicon": "^3.0.0",
 		"update-notifier": "^3.0.1"
 	},
 	"devDependencies": {
-		"ava": "^2.3.0",
+		"ava": "^3.15.0",
 		"execa": "^0.1.1",
 		"path-exists": "^4.0.0",
 		"tempy": "^0.3.0",
-		"xo": "^0.24.0"
+		"xo": "^0.37.1"
 	}
 }
