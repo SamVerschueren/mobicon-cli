@@ -29,7 +29,9 @@ const cli = meow(`
 	flags: {
 		platform: {
 			type: 'string',
-			alias: 'p'
+			alias: 'p',
+			isMultiple: true,
+			isRequired: false,
 		},
 		background: {
 			type: 'string',
@@ -39,7 +41,7 @@ const cli = meow(`
 		contentRatio: {
 			type: 'number',
 			alias: 'r',
-			default: '1'
+			default: 1
 		},
 		out: {
 			type: 'string',
@@ -56,7 +58,7 @@ if (cli.input.length === 0) {
 	process.exit(1);
 }
 
-if (!cli.flags.platform) {
+if (cli.flags.platform.length === 0) {
 	console.error('Please provide at least one platform.');
 	process.exit(1);
 }
