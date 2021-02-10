@@ -69,6 +69,90 @@ describe('android platform', () => {
 	});
 });
 
+describe('blackberry10 platform', () => {
+	test('blackberry10 - png input', async () => {
+		const tempFile = tempy.file();
+		await execa('./cli.js', ['fixtures/icon.png', '-p', 'blackberry10', '-o', tempFile]);
+
+		const doesFileExist = await Promise.all([
+			pathExists(path.join(tempFile, 'icon-90.png')),
+			pathExists(path.join(tempFile, 'icon-96.png')),
+			pathExists(path.join(tempFile, 'icon-110.png')),
+			pathExists(path.join(tempFile, 'icon-144.png')),
+		]);
+		let doesExist = true;
+		doesFileExist.map(item => {
+			if (!item) {
+				doesExist = false;
+			}
+		});
+
+		expect(doesExist).toBe(true);
+	});
+
+	test('blackberry10 - svg input', async () => {
+		const tempFile = tempy.file();
+		await execa('./cli.js', ['fixtures/icon.svg', '-p', 'blackberry10', '-o', tempFile]);
+
+		const doesFileExist = await Promise.all([
+			pathExists(path.join(tempFile, 'icon-90.png')),
+			pathExists(path.join(tempFile, 'icon-96.png')),
+			pathExists(path.join(tempFile, 'icon-110.png')),
+			pathExists(path.join(tempFile, 'icon-144.png')),
+		]);
+		let doesExist = true;
+		doesFileExist.map(item => {
+			if (!item) {
+				doesExist = false;
+			}
+		});
+
+		expect(doesExist).toBe(true);
+	});
+});
+
+describe('chrome platform', () => {
+	test('chrome - png input', async () => {
+		const tempFile = tempy.file();
+		await execa('./cli.js', ['fixtures/icon.png', '-p', 'chrome', '-o', tempFile]);
+
+		const doesFileExist = await Promise.all([
+			pathExists(path.join(tempFile, 'icon-16.png')),
+			pathExists(path.join(tempFile, 'icon-32.png')),
+			pathExists(path.join(tempFile, 'icon-48.png')),
+			pathExists(path.join(tempFile, 'icon-128.png')),
+		]);
+		let doesExist = true;
+		doesFileExist.map(item => {
+			if (!item) {
+				doesExist = false;
+			}
+		});
+
+		expect(doesExist).toBe(true);
+	});
+
+	test('chrome - svg input', async () => {
+		const tempFile = tempy.file();
+		await execa('./cli.js', ['fixtures/icon.svg', '-p', 'chrome', '-o', tempFile]);
+
+		const doesFileExist = await Promise.all([
+			pathExists(path.join(tempFile, 'icon-16.png')),
+			pathExists(path.join(tempFile, 'icon-32.png')),
+			pathExists(path.join(tempFile, 'icon-48.png')),
+			pathExists(path.join(tempFile, 'icon-128.png')),
+		]);
+		let doesExist = true;
+		doesFileExist.map(item => {
+			if (!item) {
+				doesExist = false;
+			}
+		});
+
+		expect(doesExist).toBe(true);
+	});
+});
+
 describe('ios platform', () => {
 	test('ios - png input', async () => {
 		const tempFile = tempy.file();
@@ -181,48 +265,6 @@ describe('pwa platform', () => {
 			pathExists(path.join(tempFile, 'icon-192x192.png')),
 			pathExists(path.join(tempFile, 'icon-384x384.png')),
 			pathExists(path.join(tempFile, 'icon-512x512.png')),
-		]);
-		let doesExist = true;
-		doesFileExist.map(item => {
-			if (!item) {
-				doesExist = false;
-			}
-		});
-
-		expect(doesExist).toBe(true);
-	});
-});
-
-describe('blackberry10 platform', () => {
-	test('blackberry10 - png input', async () => {
-		const tempFile = tempy.file();
-		await execa('./cli.js', ['fixtures/icon.png', '-p', 'blackberry10', '-o', tempFile]);
-
-		const doesFileExist = await Promise.all([
-			pathExists(path.join(tempFile, 'icon-90.png')),
-			pathExists(path.join(tempFile, 'icon-96.png')),
-			pathExists(path.join(tempFile, 'icon-110.png')),
-			pathExists(path.join(tempFile, 'icon-144.png')),
-		]);
-		let doesExist = true;
-		doesFileExist.map(item => {
-			if (!item) {
-				doesExist = false;
-			}
-		});
-
-		expect(doesExist).toBe(true);
-	});
-
-	test('blackberry10 - svg input', async () => {
-		const tempFile = tempy.file();
-		await execa('./cli.js', ['fixtures/icon.svg', '-p', 'blackberry10', '-o', tempFile]);
-
-		const doesFileExist = await Promise.all([
-			pathExists(path.join(tempFile, 'icon-90.png')),
-			pathExists(path.join(tempFile, 'icon-96.png')),
-			pathExists(path.join(tempFile, 'icon-110.png')),
-			pathExists(path.join(tempFile, 'icon-144.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {

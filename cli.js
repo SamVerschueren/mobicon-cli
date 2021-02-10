@@ -3,12 +3,12 @@
 const path = require('path');
 const updateNotifier = require('update-notifier');
 const meow = require('meow');
-const mobicon = require('mobicon');
+const genicon = require('genicon');
 const logSymbols = require('log-symbols');
 
 const cli = meow(`
 	Usage
-	  $ mobicon <file>
+	  $ genicon <file>
 
 	Options
 	  --platform, -p      Platform to generate icons for
@@ -19,11 +19,11 @@ const cli = meow(`
 	  --out, -o           Output directory [Default: cwd]
 
 	Examples
-	  $ mobicon icon.png -p=android
+	  $ genicon icon.png -p=android
 	    ✔  success
-	  $ mobicon icon.png -p=android -p=ios
+	  $ genicon icon.png -p=android -p=ios
 	    ✔  success
-	  $ mobicon icon.svg -p=ios -o=resources
+	  $ genicon icon.svg -p=ios -o=resources
 	    ✔  success
 `, {
 	flags: {
@@ -72,7 +72,7 @@ Promise.all(platforms.map(platform => {
 		dest = path.join(dest, platform);
 	}
 
-	return mobicon(cli.input[0], {
+	return genicon(cli.input[0], {
 		platform,
 		dest,
 		background: cli.flags.background,

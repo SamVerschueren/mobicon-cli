@@ -1,24 +1,22 @@
-# mobicon-cli [![Build Status](https://travis-ci.org/SamVerschueren/mobicon-cli.svg?branch=master)](https://travis-ci.org/SamVerschueren/mobicon-cli)
+# genicon-cli [![Build Status](https://travis-ci.com/andrefortin/genicon-cli.svg?branch=master)](https://travis-ci.com/andrefortin/genicon-cli)
 
-> Mobile app icon generator
-
+> Generate icons for mobile apps and broswer extensions/plugins
 
 ## Install
 
 ```
-$ npm install --global mobicon-cli
+$ npm install --global genicon-cli
 ```
 
-> Note: Make sure to install [GraphicsMagick](https://github.com/SamVerschueren/mobicon#graphicsmagick) as well.
-
+> Note: Make sure to install [GraphicsMagick](https://github.com/andrefortin/genicon#graphicsmagick) as well.
 
 ## Usage
 
 ```
-$ mobicon --help
+$ genicon --help
 
   Usage
-    $ mobicon <file>
+    $ genicon <file>
 
   Options
     --platform, -p      Platform to generate icons for
@@ -29,25 +27,22 @@ $ mobicon --help
     --out, -o           Output directory [Default: cwd]
 
   Examples
-    $ mobicon icon.png -p=android
+    $ genicon icon.png -p=android
       ✔  success
-    $ mobicon icon.png -p=android -p=ios -p=pwa
+    $ genicon icon.png -p=android -p=ios -p=pwa
       ✔  success
-    $ mobicon icon.svg -p=ios -o=resources
+    $ genicon icon.svg -p=ios -o=resources
       ✔  success
 ```
 
-
 ## Platforms
 
-A list of the available platforms and their generated icons can be found [here](https://github.com/SamVerschueren/mobicon#platforms).
-
+A list of the available platforms and their generated icons can be found [here](https://github.com/andrefortin/genicon#platforms).
 
 ## Related
 
-- [mobicon](https://github.com/SamVerschueren/mobicon) - API for this module
-
+- [genicon](https://github.com/andrefortin/genicon) - API for this module
 
 ## License
 
-MIT © [Sam Verschueren](http://github.com/SamVerschueren)
+MIT © [Andre Fortin](http://github.com/andrefortin)
